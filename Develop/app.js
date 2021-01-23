@@ -9,6 +9,42 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+// Empty array to store inquirer responses
+const teamArray = [];
+
+
+function addManager() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'managerName',
+            message: 'What is your name?'
+        },
+        {
+            type: 'input',
+            name: 'managerId',
+            message: 'What is your manager id?'
+        },
+        {
+            type: 'input',
+            name: 'managerEmail',
+            message: 'What is your email address? '
+        },
+        {
+            type: 'input',
+            name: 'managerOffice',
+            message: 'What is your office number?'
+        }
+    ]).then(res => {
+        // Create new instance of Manager object
+        const manager = new Manager(res.managerName, res.managerId, res.managerEmail,
+            res.managerOffice)
+
+        // push inquirer response to store in empty array
+        teamArray.push(manager);
+
+    })
+}
 
 
 // Write code to use inquirer to gather information about the development team members,

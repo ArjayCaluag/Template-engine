@@ -100,7 +100,7 @@ function addIntern() {
         {
             type: 'input',
             name: 'internSchool',
-            message: 'What is your github username?'
+            message: 'What School did you attend?'
         }
     ]).then(res => {
         // Create new instance of Intern object

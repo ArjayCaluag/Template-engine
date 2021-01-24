@@ -68,12 +68,12 @@ function addEngineer() {
             name: 'engineerGithub',
             message: 'What is your github username?'
         }
-    ]).then(res=> {
+    ]).then(res => {
         // Create new instance of Engineer object
         const engineer = new Engineer(res.engineerName, res.engineerId, res.engineerEmail, res.engineerGithub)
         // push inquirer response to store in empty array
         teamArray.push(engineer);
-        
+
     })
 }
 
@@ -101,11 +101,38 @@ function addIntern() {
             message: 'What is your github username?'
         }
     ]).then(res => {
-        // Create new instance of Engineer object
+        // Create new instance of Intern object
         const intern = new Intern(res.internName, res.internId, res.internEmail, res.internSchool)
         // push inquirer response to store in empty array
         teamArray.push(intern);
-        
+
+    })
+}
+
+// This function is passed in at the end of the addManager, addEnginer, and addIntern function to prompt the user to add more engineers, interns, or build team.
+function addMember() {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'addMember',
+            message: 'What type of member would you like to add?',
+            choices: ["Intern", "Engineer", "Done, build my team"]
+        },
+
+    // switch cases based on what user chooses from list. 
+    // 'Engineer' returns addEngineer function, 'Intern' returns addIntern function, 'Done' finishes prompt and builds team html page.
+    ]).then(res => {
+        switch (res.addMember) {
+            case 'Engineer':
+                return addEngineer();
+
+            case 'Intern':
+                return addIntern();
+
+            case 'Done, build my team':
+                
+
+        }
     })
 }
 

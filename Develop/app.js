@@ -42,7 +42,7 @@ function addManager() {
 
         // push inquirer response to store in empty array
         teamArray.push(manager);
-
+        addMember();
     })
 }
 
@@ -73,6 +73,7 @@ function addEngineer() {
         const engineer = new Engineer(res.engineerName, res.engineerId, res.engineerEmail, res.engineerGithub)
         // push inquirer response to store in empty array
         teamArray.push(engineer);
+        addMember();
 
     })
 }
@@ -105,6 +106,7 @@ function addIntern() {
         const intern = new Intern(res.internName, res.internId, res.internEmail, res.internSchool)
         // push inquirer response to store in empty array
         teamArray.push(intern);
+        addMember();
 
     })
 }

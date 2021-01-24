@@ -77,6 +77,39 @@ function addEngineer() {
     })
 }
 
+
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'internName',
+            message: 'What is your name'
+        },
+        {
+            type: 'input',
+            name: 'internId',
+            message: 'What is your id?'
+        },
+        {
+            type: 'input',
+            name: 'internEmail',
+            message: 'What is your email address?'
+        },
+        {
+            type: 'input',
+            name: 'internSchool',
+            message: 'What is your github username?'
+        }
+    ]).then(res => {
+        // Create new instance of Engineer object
+        const intern = new Intern(res.internName, res.internId, res.internEmail, res.internSchool)
+        // push inquirer response to store in empty array
+        teamArray.push(intern);
+        
+    })
+}
+
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 

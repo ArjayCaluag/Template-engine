@@ -12,6 +12,7 @@ const render = require("./lib/htmlRenderer");
 // Empty array to store inquirer responses
 const teamArray = [];
 
+addManager()
 
 function addManager() {
     inquirer.prompt([
@@ -132,10 +133,15 @@ function addMember() {
                 return addIntern();
 
             case 'Done, build my team':
-                
+                return buildTeam();
 
         }
     })
+}
+
+//  buildTeam function with writeFile method that uses outputPath as its data, renders the page with all of the inputs pushed into the team array.
+function buildTeam(){
+    fs.writeFileSync(outputPath,render(teamArray), 'utf8')
 }
 
 
